@@ -3,6 +3,7 @@ package java.numberbaseball.Server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 
 public class MainServer {		// main server
 
@@ -10,7 +11,7 @@ public class MainServer {		// main server
 
     ComRandomizer randomizer = new ComRandomizer();
     ResultChecker checker = new ResultChecker();
-    System.out.println(randomizer.com[0]+", "+ randomizer.com[1]+", "+ randomizer.com[2]);
+    System.out.println(Arrays.toString(randomizer.com));
 
     try {
       ServerSocket sSocket = new ServerSocket(8102);
