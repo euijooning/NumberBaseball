@@ -54,7 +54,7 @@ public class GameBoard extends JPanel {
     }
   }
 
-  private void drawBall(Graphics g) {
+  public void drawBall(Graphics g) {
     // 볼 그리기
     if (ball == 0) { // 0 ball
       g.setColor(Color.GREEN);
@@ -83,7 +83,7 @@ public class GameBoard extends JPanel {
     }
   }
 
-  private void drawOut(Graphics g) {
+  public void drawOut(Graphics g) {
     // 아웃 그리기
     if (out == 0) { // No-Out
       g.setColor(Color.RED);
