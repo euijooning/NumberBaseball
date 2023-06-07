@@ -51,6 +51,7 @@ public class ClientReceiveThread extends JFrame implements ActionListener, Runna
   @Override
   public void run() {
     try {
+      System.out.println(Thread.currentThread().getName()); // 현재 쓰레드명 출력
       BufferedReader tempbuf = new BufferedReader(new InputStreamReader(mSocket.getInputStream()));
       String receiveString;
 
@@ -87,7 +88,7 @@ public class ClientReceiveThread extends JFrame implements ActionListener, Runna
 
   // 서버 -> 데이터 전송
   public void actionPerformed(ActionEvent e) {
-    System.out.println(Thread.currentThread().getName());
+    System.out.println(Thread.currentThread().getName()); // 현재 쓰레드명 출력
     sendWriter.println(textField.getText());
     sendWriter.flush();
   }
