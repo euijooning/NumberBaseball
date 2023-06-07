@@ -1,4 +1,4 @@
-package java.numberbaseball.Server;
+package game.numberbaseball.Server;
 
 // 볼, 스트라이크, 아웃 판별하는 클래스
 public class ResultChecker {

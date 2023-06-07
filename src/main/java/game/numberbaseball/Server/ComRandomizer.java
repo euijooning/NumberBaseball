@@ -1,4 +1,4 @@
-package java.numberbaseball.Server;
+package game.numberbaseball.Server;
 
 //랜덤한 난수 생성하는 클래스
 public class ComRandomizer {

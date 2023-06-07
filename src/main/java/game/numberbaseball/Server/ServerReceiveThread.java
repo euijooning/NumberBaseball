@@ -1,4 +1,4 @@
-package java.numberbaseball.Server;
+package game.numberbaseball.Server;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package java.numberbaseball.Client;
+package game.numberbaseball.Client;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
