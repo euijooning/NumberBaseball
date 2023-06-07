@@ -1,4 +1,4 @@
-package java.numberbaseball.Client;
+package game.numberbaseball.Client;
 
 import java.io.IOException;
 import java.net.Socket;

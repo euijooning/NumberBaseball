@@ -1,4 +1,4 @@
-package java.numberbaseball.Client;
+package game.numberbaseball.Client;
 
 import java.awt.Color;
 import java.awt.Font;
