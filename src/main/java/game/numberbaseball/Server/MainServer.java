@@ -18,12 +18,14 @@ public class MainServer {		// main server
       Socket cSocket = sSocket.accept();
 
       ServerReceiveThread serverReceiveThread = new ServerReceiveThread();
+      System.out.println(Thread.currentThread().getName()); // 현재 쓰레드명 출력
       serverReceiveThread.setSocket(cSocket);
       serverReceiveThread.setRandomNumber(randomizer.com);
       serverReceiveThread.setUserNumber(checker);
 
       // 채팅용 Thread
       SendThread sendThread = new SendThread();
+      System.out.println(Thread.currentThread().getName()); // 현재 쓰레드명 출력
       sendThread.setSocket(cSocket);
       serverReceiveThread.start();
       sendThread.start();
