@@ -65,8 +65,7 @@ public class ClientReceiveThread extends JFrame implements ActionListener, Runna
         }
         else {
           System.out.println(receiveString);
-          gameBoard.setData(receiveString.charAt(0)-'0', receiveString.charAt(1)-'0',
-              receiveString.charAt(2)-'0');
+          gameBoard.setData(Character.getNumericValue(receiveString.charAt(0)),Character.getNumericValue(receiveString.charAt(1)), Character.getNumericValue(receiveString.charAt(2)));
           gameBoard.repaint();
         }
       }

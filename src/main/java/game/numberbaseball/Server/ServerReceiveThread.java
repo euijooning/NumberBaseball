@@ -32,9 +32,9 @@ public class ServerReceiveThread extends Thread {
         }
         else {
           System.out.println(receiveString);
-          int num1 = receiveString.charAt(0)-'0';
-          int num2 = receiveString.charAt(1)-'0';
-          int num3 = receiveString.charAt(2)-'0';
+          int num1 = Character.getNumericValue(receiveString.charAt(0));
+          int num2 = Character.getNumericValue(receiveString.charAt(1));
+          int num3 = Character.getNumericValue(receiveString.charAt(2));
           int[] user = {num1, num2, num3};
 
           checker.judgeNumber(com, user);
