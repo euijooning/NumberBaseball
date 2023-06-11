@@ -57,7 +57,6 @@ public class ClientReceiveThread extends JFrame implements ActionListener, Runna
 
       while(true) {
         receiveString = tempbuf.readLine();
-        System.out.println(receiveString);
 
         if(receiveString == null) {
           System.out.println("프로그램을 종료합니다.");
