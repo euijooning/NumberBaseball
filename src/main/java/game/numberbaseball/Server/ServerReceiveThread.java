@@ -24,7 +24,6 @@ public class ServerReceiveThread extends Thread {
 
       while(true) {
         receiveString = tempbuf.readLine();
-        System.out.println(receiveString);
 
         if(receiveString == null) {
           System.out.println("프로그램을 끝냅니다.");
