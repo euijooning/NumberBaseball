@@ -9,9 +9,9 @@ public class MainServer {		// main server
 
   public static void main(String[] args) {
 
-    ComRandomizer randomizer = new ComRandomizer();
+    int[] com = ComRandomizer.generateRandomNumbers();
     ResultChecker checker = new ResultChecker();
-    System.out.println(Arrays.toString(randomizer.com));
+    System.out.println(Arrays.toString(com));
 
     try {
       ServerSocket sSocket = new ServerSocket(8102);
@@ -20,7 +20,7 @@ public class MainServer {		// main server
       ServerReceiveThread serverReceiveThread = new ServerReceiveThread();
       System.out.println(Thread.currentThread().getName()); // 현재 쓰레드명 출력
       serverReceiveThread.setSocket(cSocket);
-      serverReceiveThread.setRandomNumber(randomizer.com);
+      serverReceiveThread.setRandomNumber(com);
       serverReceiveThread.setUserNumber(checker);
 
       // 채팅용 Thread
