@@ -61,4 +61,22 @@ class ResultCheckerTest {
     Assertions.assertEquals(3, resultChecker.ball);
     Assertions.assertEquals(0, resultChecker.out);
   }
+
+  @Test
+  @DisplayName("스트라이크와 볼이 함께 있는 경우")
+  void judgeNumber_strikeAndBallBoth() {
+    // Given
+    int[] com = {1, 5, 9};
+    int[] user = {5, 7, 9};
+    ResultChecker resultChecker = new ResultChecker();
+
+    // When
+    resultChecker.judgeNumber(com, user);
+
+    // Then
+    Assertions.assertEquals(1, resultChecker.strike);
+    Assertions.assertEquals(1, resultChecker.ball);
+    Assertions.assertEquals(0, resultChecker.out);
+  }
+
 }
