@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class SendThread extends Thread {
+
+  public static final String QUIT_STRING = "quit";
   private Socket mSocket; //main 소켓
   public void run() {
     super.run();
@@ -20,7 +22,7 @@ public class SendThread extends Thread {
         sendString = tempbuf.readLine(); // blocking
         System.out.println("나 : " + sendString); // 내가 보낸 메시지
 
-        if(sendString.equals("quit")) { // "quit" 을 입력한 경우
+        if(sendString.equals(QUIT_STRING)) { // "quit" 을 입력한 경우
           System.out.println("프로그램을 종료합니다.");
           sendString = "quitSignal";
           sendWriter.println(sendString);
