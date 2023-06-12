@@ -11,6 +11,9 @@ public class GameBoard extends JPanel {
   int ball = 0;
   int out = 0;
 
+  public GameBoard() {
+  }
+
   void setData(int strike, int ball, int out) {
     this.strike = strike;
     this.ball = ball;
@@ -20,38 +23,38 @@ public class GameBoard extends JPanel {
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
-    g.setFont(new Font("맑은 고딕",Font.BOLD,20));
+    g.setFont(new Font("맑은 고딕", 1,20));
+    this.drawStrike(g);
 
-    //별도 메서드 분리
-    drawStrike(g);
-    drawBall(g);
-    drawOut(g);
+    if (this.strike != 3) {
+      this.drawBall(g);
+      this.drawOut(g);
+    }
   }
 
   public void drawStrike(Graphics g) {
     // 스트라이크 그리기
-    if (strike == 3) { // 홈런
+    if (this.strike == 3) { // 홈런인 경우
       super.paintComponent(g);
-      removeAll();
-      repaint();
+      this.removeAll();
+      this.repaint();
 
-      g.setFont(new Font("맑은 고딕", Font.BOLD, 60));
-      g.drawString("Home Run! 축하합니다!", 30, 180);
+      g.setColor(Color.WHITE);
+      g.setFont(new Font("맑은 고딕", 1, 60));
+      g.drawString("Home Run!", 30, 180);
+      g.drawString("축하합니다!", 30, 300);
     }
     else { // 홈런 아닌 경우
-      if (strike == 0) { // 0 strike
-        g.setColor(Color.YELLOW);
-        g.drawString("S", 30, 262);
+      g.setColor(Color.YELLOW);
+      g.drawString("S", 30, 262);
+
+      if (this.strike == 0) { // 0 strike
         g.drawOval(50, 240, 30, 30);
         g.drawOval(90, 240, 30, 30);
-      } else if (strike == 1) { // 1 strike
-        g.setColor(Color.YELLOW);
-        g.drawString("S", 30, 262);
+      } else if (this.strike == 1) { // 1 strike
         g.fillOval(50, 240, 30, 30);
         g.drawOval(90, 240, 30, 30);
       } else { // 2 strike
-        g.setColor(Color.YELLOW);
-        g.drawString("S", 30, 262);
         g.fillOval(50, 240, 30, 30);
         g.fillOval(90, 240, 30, 30);
       }
@@ -60,27 +63,22 @@ public class GameBoard extends JPanel {
 
   public void drawBall(Graphics g) {
     // 볼 그리기
-    if (ball == 0) { // 0 ball
-      g.setColor(Color.GREEN);
-      g.drawString("B", 30, 222);
+    g.setColor(Color.GREEN);
+    g.drawString("B", 30, 222);
+
+    if (this.ball == 0) { // 0 ball
       g.drawOval(50, 200, 30, 30);
       g.drawOval(90, 200, 30, 30);
       g.drawOval(130, 200, 30, 30);
-    } else if (ball == 1) { // 1 ball
-      g.setColor(Color.GREEN);
-      g.drawString("B", 30, 222);
+    } else if (this.ball == 1) { // 1 ball
       g.fillOval(50, 200, 30, 30);
       g.drawOval(90, 200, 30, 30);
       g.drawOval(130, 200, 30, 30);
-    } else if (ball == 2) { // 2 ball
-      g.setColor(Color.GREEN);
-      g.drawString("B", 30, 222);
+    } else if (this.ball == 2) { // 2 ball
       g.fillOval(50, 200, 30, 30);
       g.fillOval(90, 200, 30, 30);
       g.drawOval(130, 200, 30, 30);
     } else { // 3 ball
-      g.setColor(Color.GREEN);
-      g.drawString("B", 30, 222);
       g.fillOval(50, 200, 30, 30);
       g.fillOval(90, 200, 30, 30);
       g.fillOval(130, 200, 30, 30);
@@ -89,13 +87,12 @@ public class GameBoard extends JPanel {
 
   public void drawOut(Graphics g) {
     // 아웃 그리기
+    g.setColor(Color.RED);
+    g.drawString("O", 30, 302);
+
     if (out == 0) { // No-Out
-      g.setColor(Color.RED);
-      g.drawString("O", 30, 302);
       g.drawOval(50, 280, 30, 30);
     } else { // Out
-      g.setColor(Color.RED);
-      g.drawString("O", 30, 302);
       g.fillOval(50, 280, 30, 30);
     }
   }
