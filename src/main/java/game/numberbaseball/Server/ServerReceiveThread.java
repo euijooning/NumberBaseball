@@ -17,13 +17,13 @@ public class ServerReceiveThread extends Thread {
 
     try {
       System.out.println(Thread.currentThread().getName()); // 현재 쓰레드명 출력
-      BufferedReader tempbuf = new BufferedReader(new InputStreamReader(mSocket.getInputStream()));
+      BufferedReader reader = new BufferedReader(new InputStreamReader(mSocket.getInputStream()));
       PrintWriter sendWriter = new PrintWriter(mSocket.getOutputStream());
 
       String receiveString;
 
       while(true) {
-        receiveString = tempbuf.readLine();
+        receiveString = reader.readLine();
 
         if(receiveString == null) {
           System.out.println("프로그램을 끝냅니다.");

@@ -13,11 +13,11 @@ public class MainClient {  //main client
       ViewController viewController = new ViewController();
       ClientReceiveThread rThread = new ClientReceiveThread(viewController);
       // 이렇게 하면 viewController와 MainClient에서의 viewController가 똑같은 객체를 가리킴
-      viewController.init(rThread);
+      viewController.init(rThread); // 조립하게 만들기
 
       rThread.setSocket(cSocket);
-      Thread t = new Thread(rThread);
-      t.start();
+      Thread cThread = new Thread(rThread);
+      cThread.start();
     } catch (IOException e) {
       e.printStackTrace();
     }
