@@ -1,6 +1,7 @@
 package game.numberbaseball.Client;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -22,9 +23,13 @@ public class ViewController extends JFrame {
 
   public void init(ClientReceiveThread rThread) {
     Container container = getContentPane();
+    container.setSize(500, 500);
     container.setLayout(new BorderLayout());
 
     gameBoard = new GameBoard();
+    gameBoard.setBackground(Color.BLACK); // 게임 결과판 배경 검정색
+    gameBoard.setSize(500, 500);
+
     textField = new JTextField(15);
     gameBoard.add(textField);
 
