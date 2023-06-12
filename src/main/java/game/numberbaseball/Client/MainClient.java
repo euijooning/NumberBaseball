@@ -9,7 +9,12 @@ public class MainClient {  //main client
     try {
       System.out.println(Thread.currentThread().getName()); // 현재 쓰레드명 출력
       Socket cSocket = new Socket("localHost", 8102);
-      ClientReceiveThread rThread = new ClientReceiveThread();
+
+      ViewController viewController = new ViewController();
+      ClientReceiveThread rThread = new ClientReceiveThread(viewController);
+      // 이렇게 하면 viewController와 MainClient에서의 viewController가 똑같은 객체를 가리킴
+      viewController.init(rThread);
+
       rThread.setSocket(cSocket);
       Thread t = new Thread(rThread);
       t.start();

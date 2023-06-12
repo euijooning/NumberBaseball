@@ -1,8 +1,5 @@
 package game.numberbaseball.Client;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -10,41 +7,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
 
-public class ClientReceiveThread extends JFrame implements ActionListener, Runnable{
-
-  GameBoard gameBoard;
-  JTextField textField;
-  JButton button;
+public class ClientReceiveThread implements Runnable, ActionListener {
 
   private Socket mSocket;
   PrintWriter sendWriter;
 
+  ViewController viewController;
 
-  public ClientReceiveThread(){
-
-    Container container = getContentPane();
-    container.setLayout(new BorderLayout());
-
-    gameBoard = new GameBoard();
-    textField = new JTextField(15);
-    gameBoard.add(textField);
-
-    button = new JButton("입력");
-    button.addActionListener(this);
-    button.setFont(new Font("맑은 고딕",Font.BOLD,18));
-    gameBoard.add(button);
-
-    container.add(gameBoard);
-
-    setSize(600,600);
-
-    setVisible(true);
-
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  public ClientReceiveThread(ViewController viewController) {
+    this.viewController = viewController;
   }
 
   // 서버가 보낸 스트라이크 볼을 가지고 화면 다시 그리기
@@ -64,8 +36,8 @@ public class ClientReceiveThread extends JFrame implements ActionListener, Runna
         }
         else {
           System.out.println(receiveString);
-          gameBoard.setData(Character.getNumericValue(receiveString.charAt(0)),Character.getNumericValue(receiveString.charAt(1)), Character.getNumericValue(receiveString.charAt(2)));
-          gameBoard.repaint();
+          viewController.setGameBoardData(Character.getNumericValue(receiveString.charAt(0)), Character.getNumericValue(receiveString.charAt(1)), Character.getNumericValue(receiveString.charAt(2)));
+          viewController.repaint();
         }
       }
     } catch(IOException e) {
@@ -84,10 +56,11 @@ public class ClientReceiveThread extends JFrame implements ActionListener, Runna
     }
   }
 
-  // 서버 -> 데이터 전송
+  //서버 -> 데이터 전송
   public void actionPerformed(ActionEvent e) {
     System.out.println(Thread.currentThread().getName()); // 현재 쓰레드명 출력
-    sendWriter.println(textField.getText());
+    sendWriter.println(viewController.getTextFieldValue());
     sendWriter.flush();
   }
+
 }
