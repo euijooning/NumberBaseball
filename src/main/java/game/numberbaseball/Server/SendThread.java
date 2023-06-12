@@ -13,13 +13,13 @@ public class SendThread extends Thread {
   public void run() {
     super.run();
     try {
-      BufferedReader tempbuf = new BufferedReader(new InputStreamReader(System.in));
+      BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
       PrintWriter sendWriter = new PrintWriter(mSocket.getOutputStream());
 
       String sendString;
 
       while(true) {
-        sendString = tempbuf.readLine(); // blocking
+        sendString = reader.readLine(); // blocking
         System.out.println("나 : " + sendString); // 내가 보낸 메시지
 
         if(sendString.equals(QUIT_STRING)) { // "quit" 을 입력한 경우
