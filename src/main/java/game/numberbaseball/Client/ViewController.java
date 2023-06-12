@@ -5,13 +5,19 @@ import java.awt.Container;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.text.JTextComponent;
 
 //화면을 담당하는 부분 클래스 분리
 public class ViewController extends JFrame {
 
   GameBoard gameBoard;
   JTextField textField;
+  JTextArea errorMessageArea;
+  JTextPane errorPane;
+  JTextComponent errorTextComponent;
   JButton button;
 
   public void init(ClientReceiveThread rThread) {
@@ -21,6 +27,10 @@ public class ViewController extends JFrame {
     gameBoard = new GameBoard();
     textField = new JTextField(15);
     gameBoard.add(textField);
+
+    errorMessageArea = new JTextArea();
+    errorMessageArea.setLocation(30, 50);
+    gameBoard.add(errorMessageArea);
 
     button = new JButton("입력");
     button.addActionListener(rThread);
@@ -40,5 +50,9 @@ public class ViewController extends JFrame {
 
   public String getTextFieldValue() {
     return this.textField.getText();
+  }
+
+  public void setErrorMessage(String message) {
+    this.errorMessageArea.setText(message);
   }
 }

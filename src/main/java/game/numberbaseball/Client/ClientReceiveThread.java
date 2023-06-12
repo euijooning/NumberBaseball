@@ -12,8 +12,8 @@ public class ClientReceiveThread implements Runnable, ActionListener {
 
   private Socket mSocket;
   PrintWriter sendWriter;
-
   ViewController viewController;
+  ClientNumberValidator clientNumberValidator = new ClientNumberValidator();
 
   public ClientReceiveThread(ViewController viewController) {
     this.viewController = viewController;
@@ -58,9 +58,18 @@ public class ClientReceiveThread implements Runnable, ActionListener {
 
   //서버 -> 데이터 전송
   public void actionPerformed(ActionEvent e) {
-    System.out.println(Thread.currentThread().getName()); // 현재 쓰레드명 출력
-    sendWriter.println(viewController.getTextFieldValue());
-    sendWriter.flush();
+    String clientNumber = viewController.getTextFieldValue();
+
+    if (clientNumberValidator.validate(clientNumber)) {
+      viewController.setErrorMessage("");
+
+      sendWriter.println(clientNumber);
+      sendWriter.flush();
+
+    } else {
+      viewController.setErrorMessage("중복되지 않은 세자리 수를 입력해주세요!");
+    }
+
   }
 
 }
