@@ -4,12 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.text.JTextComponent;
 
 //화면을 담당하는 부분 클래스 분리
 public class ViewController extends JFrame {
@@ -17,11 +18,9 @@ public class ViewController extends JFrame {
   GameBoard gameBoard;
   JTextField textField;
   JTextArea errorMessageArea;
-  JTextPane errorPane;
-  JTextComponent errorTextComponent;
   JButton button;
 
-  public void init(ClientReceiveThread rThread) {
+  public void init(Socket socket) throws IOException {
     Container container = getContentPane();
     container.setSize(500, 500);
     container.setLayout(new BorderLayout());
@@ -38,7 +37,8 @@ public class ViewController extends JFrame {
     gameBoard.add(errorMessageArea);
 
     button = new JButton("입력");
-    button.addActionListener(rThread);
+    InputListener inputListener = new InputListener(new PrintWriter(socket.getOutputStream()), this);
+    button.addActionListener(inputListener);
     button.setFont(new Font("맑은 고딕",Font.BOLD,18));
     gameBoard.add(button);
 

@@ -1,19 +1,16 @@
 package game.numberbaseball.Client;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class ClientReceiveThread implements Runnable, ActionListener {
+public class ClientReceiveThread implements Runnable {
 
   private Socket mSocket;
   PrintWriter sendWriter;
   ViewController viewController;
-  ClientNumberValidator clientNumberValidator = new ClientNumberValidator();
 
   public ClientReceiveThread(ViewController viewController) {
     this.viewController = viewController;
@@ -54,22 +51,6 @@ public class ClientReceiveThread implements Runnable, ActionListener {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
-  }
-
-  //서버 -> 데이터 전송
-  public void actionPerformed(ActionEvent e) {
-    String clientNumber = viewController.getTextFieldValue();
-
-    if (clientNumberValidator.validate(clientNumber)) {
-      viewController.setErrorMessage("");
-
-      sendWriter.println(clientNumber);
-      sendWriter.flush();
-
-    } else {
-      viewController.setErrorMessage("중복되지 않은 세자리 수를 입력해주세요!");
-    }
-
   }
 
 }
