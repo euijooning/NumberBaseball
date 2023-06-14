@@ -1,7 +1,5 @@
 package game.numberbaseball.Server;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,12 +18,12 @@ class ResultCheckerTest {
     ResultChecker resultChecker = new ResultChecker();
 
     // When
-    resultChecker.judgeNumber(com, user);
+    CountResult cResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    Assertions.assertEquals(3, resultChecker.strike);
-    Assertions.assertEquals(0, resultChecker.ball);
-    Assertions.assertEquals(0, resultChecker.out);
+    Assertions.assertEquals(3, cResult.strike);
+    Assertions.assertEquals(0, cResult.ball);
+    Assertions.assertEquals(0, cResult.out);
   }
 
   @Test
@@ -37,12 +35,12 @@ class ResultCheckerTest {
     ResultChecker resultChecker = new ResultChecker();
 
     // When
-    resultChecker.judgeNumber(com, user);
+    CountResult cResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    Assertions.assertEquals(0, resultChecker.strike);
-    Assertions.assertEquals(0, resultChecker.ball);
-    Assertions.assertEquals(1, resultChecker.out);
+    Assertions.assertEquals(0, cResult.strike);
+    Assertions.assertEquals(0, cResult.ball);
+    Assertions.assertEquals(1, cResult.out);
   }
 
   @Test
@@ -54,12 +52,12 @@ class ResultCheckerTest {
     ResultChecker resultChecker = new ResultChecker();
 
     // When
-    resultChecker.judgeNumber(com, user);
+    CountResult cResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    Assertions.assertEquals(0, resultChecker.strike);
-    Assertions.assertEquals(3, resultChecker.ball);
-    Assertions.assertEquals(0, resultChecker.out);
+    Assertions.assertEquals(0, cResult.strike);
+    Assertions.assertEquals(3, cResult.ball);
+    Assertions.assertEquals(0, cResult.out);
   }
 
   @Test
@@ -71,12 +69,12 @@ class ResultCheckerTest {
     ResultChecker resultChecker = new ResultChecker();
 
     // When
-    resultChecker.judgeNumber(com, user);
+    CountResult cResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    Assertions.assertEquals(1, resultChecker.strike);
-    Assertions.assertEquals(1, resultChecker.ball);
-    Assertions.assertEquals(0, resultChecker.out);
+    Assertions.assertEquals(1, cResult.strike);
+    Assertions.assertEquals(1, cResult.ball);
+    Assertions.assertEquals(0, cResult.out);
   }
 
 }
