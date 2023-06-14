@@ -32,21 +32,25 @@ public class GameBoard extends JPanel {
     }
   }
 
-  private boolean gameOver() {
+  public boolean gameOver() {
     return this.strike == 3;
   }
-  
+
+  public void drawHomerun(Graphics g) {
+    super.paintComponent(g);
+    this.removeAll();
+    this.repaint();
+
+    g.setColor(Color.WHITE);
+    g.setFont(new Font("맑은 고딕", 1, 60));
+    g.drawString("Home Run!", 30, 180);
+    g.drawString("축하합니다.", 30, 300);
+  }
+
   public void drawStrike(Graphics g) {
     // 스트라이크 그리기
     if (this.strike == 3) { // 홈런인 경우
-      super.paintComponent(g);
-      this.removeAll();
-      this.repaint();
-
-      g.setColor(Color.WHITE);
-      g.setFont(new Font("맑은 고딕", 1, 60));
-      g.drawString("Home Run!", 30, 180);
-      g.drawString("축하합니다!", 30, 300);
+      drawHomerun(g);
     }
     else { // 홈런 아닌 경우
       g.setColor(Color.YELLOW);
