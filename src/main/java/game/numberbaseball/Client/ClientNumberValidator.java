@@ -13,6 +13,12 @@ public class ClientNumberValidator {
       return false;
     }
 
+    try {
+      Integer.parseInt(inputNumber);
+    } catch (NumberFormatException e ) {
+      return false;
+    }
+
     return true;
   }
 }
