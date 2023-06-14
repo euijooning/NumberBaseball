@@ -21,27 +21,27 @@ public class ViewController extends JFrame {
   JButton button;
 
   public void init(Socket socket) throws IOException {
-    Container container = getContentPane();
-    container.setSize(500, 500);
-    container.setLayout(new BorderLayout());
-
-    gameBoard = new GameBoard();
-    gameBoard.setBackground(Color.BLACK); // 게임 결과판 배경 검정색
-    gameBoard.setSize(500, 500);
 
     textField = new JTextField(15);
-    gameBoard.add(textField);
 
     errorMessageArea = new JTextArea();
     errorMessageArea.setLocation(30, 50);
-    gameBoard.add(errorMessageArea);
 
     button = new JButton("입력");
     InputListener inputListener = new InputListener(new PrintWriter(socket.getOutputStream()), this);
     button.addActionListener(inputListener);
     button.setFont(new Font("맑은 고딕",Font.BOLD,18));
+
+    gameBoard = new GameBoard();
+    gameBoard.setBackground(Color.BLACK);
+    gameBoard.setSize(500, 500);
+    gameBoard.add(textField);
+    gameBoard.add(errorMessageArea);
     gameBoard.add(button);
 
+    Container container = getContentPane();
+    container.setSize(500, 500);
+    container.setLayout(new BorderLayout());
     container.add(gameBoard);
 
     setSize(600,600);
