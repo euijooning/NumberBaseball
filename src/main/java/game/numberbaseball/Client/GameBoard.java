@@ -7,6 +7,9 @@ import javax.swing.JPanel;
 
 public class GameBoard extends JPanel {
 
+  private static final int X_INIT = 50;
+  private static final int X_SPACE = 40;
+
   int strike = 0;
   int ball = 0;
   int out = 0;
@@ -24,9 +27,11 @@ public class GameBoard extends JPanel {
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     g.setFont(new Font("맑은 고딕", 1,20));
-    this.drawStrike(g);
 
-    if (this.strike != 3) {
+    if (gameOver()) {
+      this.drawHomerun(g);
+    } else {
+      this.drawStrike(g);
       this.drawBall(g);
       this.drawOut(g);
     }
@@ -49,23 +54,18 @@ public class GameBoard extends JPanel {
 
   public void drawStrike(Graphics g) {
     // 스트라이크 그리기
-    if (this.strike == 3) { // 홈런인 경우
-      drawHomerun(g);
-    }
-    else { // 홈런 아닌 경우
-      g.setColor(Color.YELLOW);
-      g.drawString("S", 30, 262);
+    g.setColor(Color.YELLOW);
+    g.drawString("S", 30, 262);
 
-      if (this.strike == 0) { // 0 strike
-        g.drawOval(50, 240, 30, 30);
-        g.drawOval(90, 240, 30, 30);
-      } else if (this.strike == 1) { // 1 strike
-        g.fillOval(50, 240, 30, 30);
-        g.drawOval(90, 240, 30, 30);
-      } else { // 2 strike
-        g.fillOval(50, 240, 30, 30);
-        g.fillOval(90, 240, 30, 30);
-      }
+    if (this.strike == 0) { // 0 strike
+      g.drawOval(X_INIT, 240, 30, 30);
+      g.drawOval(X_INIT + X_SPACE, 240, 30, 30);
+    } else if (this.strike == 1) { // 1 strike
+      g.fillOval(X_INIT, 240, 30, 30);
+      g.drawOval(X_INIT + X_SPACE, 240, 30, 30);
+    } else { // 2 strike
+      g.fillOval(X_INIT, 240, 30, 30);
+      g.fillOval(X_INIT + X_SPACE, 240, 30, 30);
     }
   }
 
@@ -74,22 +74,12 @@ public class GameBoard extends JPanel {
     g.setColor(Color.GREEN);
     g.drawString("B", 30, 222);
 
-    if (this.ball == 0) { // 0 ball
-      g.drawOval(50, 200, 30, 30);
-      g.drawOval(90, 200, 30, 30);
-      g.drawOval(130, 200, 30, 30);
-    } else if (this.ball == 1) { // 1 ball
-      g.fillOval(50, 200, 30, 30);
-      g.drawOval(90, 200, 30, 30);
-      g.drawOval(130, 200, 30, 30);
-    } else if (this.ball == 2) { // 2 ball
-      g.fillOval(50, 200, 30, 30);
-      g.fillOval(90, 200, 30, 30);
-      g.drawOval(130, 200, 30, 30);
-    } else { // 3 ball
-      g.fillOval(50, 200, 30, 30);
-      g.fillOval(90, 200, 30, 30);
-      g.fillOval(130, 200, 30, 30);
+    int  x = X_INIT;
+    for (int i = 0; i<this.ball; i++, x += X_SPACE) {
+      g.fillOval(x, 200, 30, 30);
+    }
+    for (int i = 0; i<3-this.ball; i++, x += X_SPACE) {
+      g.drawOval(x, 200, 30, 30);
     }
   }
 
@@ -99,9 +89,9 @@ public class GameBoard extends JPanel {
     g.drawString("O", 30, 302);
 
     if (out == 0) { // No-Out
-      g.drawOval(50, 280, 30, 30);
+      g.drawOval(X_INIT, 280, 30, 30);
     } else { // Out
-      g.fillOval(50, 280, 30, 30);
+      g.fillOval(X_INIT, 280, 30, 30);
     }
   }
 }
