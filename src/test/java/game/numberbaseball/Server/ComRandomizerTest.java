@@ -9,7 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.annotation.Repeat;
 
-@ExtendWith(MockitoExtension.class)
 class ComRandomizerTest {
 
   @Repeat(value = 10) //정확도를 위해 10번 반복 설정
