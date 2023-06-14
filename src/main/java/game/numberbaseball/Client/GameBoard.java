@@ -32,6 +32,10 @@ public class GameBoard extends JPanel {
     }
   }
 
+  private boolean gameOver() {
+    return this.strike == 3;
+  }
+  
   public void drawStrike(Graphics g) {
     // 스트라이크 그리기
     if (this.strike == 3) { // 홈런인 경우
