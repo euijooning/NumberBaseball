@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-@ExtendWith(MockitoExtension.class)
 class ResultCheckerTest {
+  ResultChecker resultChecker = new ResultChecker();
 
   @Test
   @DisplayName("3스트라이크인 경우")
@@ -15,7 +15,6 @@ class ResultCheckerTest {
     // Given
     int[] com = {1, 2, 3};
     int[] user = {1, 2, 3};
-    ResultChecker resultChecker = new ResultChecker();
 
     // When
     CountResult cResult = resultChecker.judgeNumber(com, user);
@@ -32,7 +31,6 @@ class ResultCheckerTest {
     // Given
     int[] com = {1, 2, 3};
     int[] user = {4, 5, 6};
-    ResultChecker resultChecker = new ResultChecker();
 
     // When
     CountResult cResult = resultChecker.judgeNumber(com, user);
@@ -49,7 +47,6 @@ class ResultCheckerTest {
     // Given
     int[] com = {1, 2, 3};
     int[] user = {3, 1, 2};
-    ResultChecker resultChecker = new ResultChecker();
 
     // When
     CountResult cResult = resultChecker.judgeNumber(com, user);
@@ -66,7 +63,6 @@ class ResultCheckerTest {
     // Given
     int[] com = {1, 5, 9};
     int[] user = {5, 7, 9};
-    ResultChecker resultChecker = new ResultChecker();
 
     // When
     CountResult cResult = resultChecker.judgeNumber(com, user);
