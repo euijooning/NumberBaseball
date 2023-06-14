@@ -36,8 +36,9 @@ public class ServerReceiveThread extends Thread {
           int num3 = Character.getNumericValue(receiveString.charAt(2));
           int[] user = {num1, num2, num3};
 
-          checker.judgeNumber(com, user);
-          sendWriter.println(checker.getValue());
+          CountResult cResult = checker.judgeNumber(com, user);
+          String resultString = cResult.strike + "" + cResult.ball + "" + cResult.out;
+          sendWriter.println(resultString);
           sendWriter.flush();
         }
       }
