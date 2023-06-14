@@ -31,13 +31,11 @@ public class ServerReceiveThread extends Thread {
         }
         else {
           System.out.println(receiveString);
-          int num1 = Character.getNumericValue(receiveString.charAt(0));
-          int num2 = Character.getNumericValue(receiveString.charAt(1));
-          int num3 = Character.getNumericValue(receiveString.charAt(2));
-          int[] user = {num1, num2, num3};
+          int[] user = makeIntArray(receiveString);
 
           CountResult cResult = checker.judgeNumber(com, user);
           String resultString = cResult.strike + "" + cResult.ball + "" + cResult.out;
+
           sendWriter.println(resultString);
           sendWriter.flush();
         }
@@ -47,6 +45,16 @@ public class ServerReceiveThread extends Thread {
     }
     System.exit(0);
   }
+
+  public int[] makeIntArray(String receiveString) {
+    int num1 = Character.getNumericValue(receiveString.charAt(0));
+    int num2 = Character.getNumericValue(receiveString.charAt(1));
+    int num3 = Character.getNumericValue(receiveString.charAt(2));
+
+    int[] userInput = {num1, num2, num3};
+    return userInput;
+  }
+
   public void setSocket(Socket socket) {
     mSocket = socket;
   }
