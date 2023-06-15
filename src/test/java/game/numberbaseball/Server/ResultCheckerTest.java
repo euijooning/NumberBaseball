@@ -1,10 +1,9 @@
 package game.numberbaseball.Server;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 class ResultCheckerTest {
   ResultChecker resultChecker = new ResultChecker();
@@ -17,12 +16,16 @@ class ResultCheckerTest {
     int[] user = {1, 2, 3};
 
     // When
-    CountResult cResult = resultChecker.judgeNumber(com, user);
+    CountResult actualResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    Assertions.assertEquals(3, cResult.strike);
-    Assertions.assertEquals(0, cResult.ball);
-    Assertions.assertEquals(0, cResult.out);
+    CountResult expectedResult = CountResult.builder()
+        .strike(3)
+        .ball(0)
+        .out(0)
+        .build();
+
+    assertEquals(expectedResult, actualResult);
   }
 
   @Test
@@ -33,12 +36,16 @@ class ResultCheckerTest {
     int[] user = {4, 5, 6};
 
     // When
-    CountResult cResult = resultChecker.judgeNumber(com, user);
+    CountResult actualResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    Assertions.assertEquals(0, cResult.strike);
-    Assertions.assertEquals(0, cResult.ball);
-    Assertions.assertEquals(1, cResult.out);
+    CountResult expectedResult = CountResult.builder()
+        .strike(0)
+        .ball(0)
+        .out(1)
+        .build();
+
+    assertEquals(expectedResult, actualResult);
   }
 
   @Test
@@ -49,12 +56,16 @@ class ResultCheckerTest {
     int[] user = {3, 1, 2};
 
     // When
-    CountResult cResult = resultChecker.judgeNumber(com, user);
+    CountResult actualResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    Assertions.assertEquals(0, cResult.strike);
-    Assertions.assertEquals(3, cResult.ball);
-    Assertions.assertEquals(0, cResult.out);
+    CountResult expectedResult = CountResult.builder()
+        .strike(0)
+        .ball(3)
+        .out(0)
+        .build();
+
+    assertEquals(expectedResult, actualResult);
   }
 
   @Test
@@ -65,12 +76,16 @@ class ResultCheckerTest {
     int[] user = {5, 7, 9};
 
     // When
-    CountResult cResult = resultChecker.judgeNumber(com, user);
+    CountResult actualResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    Assertions.assertEquals(1, cResult.strike);
-    Assertions.assertEquals(1, cResult.ball);
-    Assertions.assertEquals(0, cResult.out);
+    CountResult expectedResult = CountResult.builder()
+        .strike(1)
+        .ball(1)
+        .out(0)
+        .build();
+
+    assertEquals(expectedResult, actualResult);
   }
 
 }
