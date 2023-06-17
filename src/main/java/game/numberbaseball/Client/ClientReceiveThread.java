@@ -9,7 +9,6 @@ import java.net.Socket;
 public class ClientReceiveThread implements Runnable {
 
   private Socket mSocket;
-  PrintWriter sendWriter;
   ViewController viewController;
 
   public ClientReceiveThread(ViewController viewController) {
@@ -45,12 +44,6 @@ public class ClientReceiveThread implements Runnable {
 
   public void setSocket(Socket socket) {
     mSocket = socket;
-
-    try {
-      sendWriter = new PrintWriter(mSocket.getOutputStream());
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
   }
 
 }
