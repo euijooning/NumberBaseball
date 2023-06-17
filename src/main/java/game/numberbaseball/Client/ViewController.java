@@ -13,9 +13,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 //화면을 담당하는 부분 클래스 분리
-public class ViewController extends JFrame {
+public class ViewController {
 
   GameBoard gameBoard;
+  JFrame frame;
   JTextField textField;
   JTextArea errorMessageArea;
   JButton button;
@@ -39,14 +40,15 @@ public class ViewController extends JFrame {
     gameBoard.add(errorMessageArea);
     gameBoard.add(button);
 
-    Container container = getContentPane();
+    frame = new JFrame();
+    Container container = frame.getContentPane();
     container.setSize(500, 500);
     container.setLayout(new BorderLayout());
     container.add(gameBoard);
 
-    setSize(600,600);
-    setVisible(true);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(600,600);
+    frame.setVisible(true);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 
   public void setGameBoardData(int numericValue1, int numericValue2, int numericValue3) {
@@ -59,5 +61,9 @@ public class ViewController extends JFrame {
 
   public void setErrorMessage(String message) {
     this.errorMessageArea.setText(message);
+  }
+
+  public void repaint() {
+    this.frame.repaint();
   }
 }
