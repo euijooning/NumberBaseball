@@ -51,8 +51,8 @@ public class ViewController {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 
-  public void setGameBoardData(int numericValue1, int numericValue2, int numericValue3) {
-    this.gameBoard.setData(numericValue1, numericValue2, numericValue3);
+  public void setGameBoardData(ClientCountResult countResult) {
+    this.gameBoard.setData(countResult);
   }
 
   public String getTextFieldValue() {

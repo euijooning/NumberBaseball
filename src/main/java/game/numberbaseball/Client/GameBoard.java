@@ -7,20 +7,16 @@ import javax.swing.JPanel;
 
 public class GameBoard extends JPanel {
 
+  ClientCountResult countResult;
   private static final int X_INIT = 50;
   private static final int X_SPACE = 40;
 
-  int strike = 0;
-  int ball = 0;
-  int out = 0;
-
   public GameBoard() {
+    countResult = new ClientCountResult();
   }
 
-  void setData(int strike, int ball, int out) {
-    this.strike = strike;
-    this.ball = ball;
-    this.out = out;
+  void setData(ClientCountResult countResult) {
+    this.countResult = countResult;
   }
 
   @Override
@@ -38,7 +34,7 @@ public class GameBoard extends JPanel {
   }
 
   public boolean gameOver() {
-    return this.strike == 3;
+    return countResult.strike == 3;
   }
 
   public void drawHomerun(Graphics g) {
@@ -57,10 +53,10 @@ public class GameBoard extends JPanel {
     g.setColor(Color.YELLOW);
     g.drawString("S", 30, 262);
 
-    if (this.strike == 0) { // 0 strike
+    if (this.countResult.strike == 0) { // 0 strike
       g.drawOval(X_INIT, 240, 30, 30);
       g.drawOval(X_INIT + X_SPACE, 240, 30, 30);
-    } else if (this.strike == 1) { // 1 strike
+    } else if (this.countResult.strike == 1) { // 1 strike
       g.fillOval(X_INIT, 240, 30, 30);
       g.drawOval(X_INIT + X_SPACE, 240, 30, 30);
     } else { // 2 strike
@@ -75,10 +71,10 @@ public class GameBoard extends JPanel {
     g.drawString("B", 30, 222);
 
     int  x = X_INIT;
-    for (int i = 0; i<this.ball; i++, x += X_SPACE) {
+    for (int i = 0; i<this.countResult.ball; i++, x += X_SPACE) {
       g.fillOval(x, 200, 30, 30);
     }
-    for (int i = 0; i<3-this.ball; i++, x += X_SPACE) {
+    for (int i = 0; i<3-this.countResult.ball; i++, x += X_SPACE) {
       g.drawOval(x, 200, 30, 30);
     }
   }
@@ -88,7 +84,7 @@ public class GameBoard extends JPanel {
     g.setColor(Color.RED);
     g.drawString("O", 30, 302);
 
-    if (out == 0) { // No-Out
+    if (this.countResult.out == 0) { // No-Out
       g.drawOval(X_INIT, 280, 30, 30);
     } else { // Out
       g.fillOval(X_INIT, 280, 30, 30);
