@@ -32,6 +32,11 @@ public class ClientReceiveThread implements Runnable {
         }
         else {
           System.out.println(receiveString);
+          try {
+            Integer.parseInt(receiveString);
+          } catch (NumberFormatException e) {
+            continue;
+          }
           viewController.setGameBoardData(new ClientCountResult(receiveString));
           viewController.repaint();
         }
