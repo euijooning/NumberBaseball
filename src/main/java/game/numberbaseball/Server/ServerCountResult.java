@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class CountResult {
+public class ServerCountResult {
 
-  int strike = 0;
   int ball = 0;
+  int strike = 0;
   int out = 0;
 
 }
