@@ -33,8 +33,8 @@ public class ServerReceiveThread extends Thread {
           System.out.println(receiveString);
           int[] user = makeIntArray(receiveString);
 
-          CountResult cResult = checker.judgeNumber(com, user);
-          String resultString = cResult.strike + "" + cResult.ball + "" + cResult.out;
+          ServerCountResult cResult = checker.judgeNumber(com, user);
+          String resultString = cResult.ball + "" + cResult.strike + "" + cResult.out;
 
           sendWriter.println(resultString);
           sendWriter.flush();

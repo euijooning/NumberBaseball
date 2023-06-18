@@ -3,8 +3,8 @@ package game.numberbaseball.Server;
 // 볼, 스트라이크, 아웃 판별하는 클래스
 public class ResultChecker {
 
-  public CountResult judgeNumber(int[] com, int[] user) {
-    CountResult cResult = new CountResult();
+  public ServerCountResult judgeNumber(int[] com, int[] user) {
+    ServerCountResult cResult = new ServerCountResult();
 
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
@@ -19,7 +19,7 @@ public class ResultChecker {
       }
     }
 
-    if (cResult.strike == 0 && cResult.ball == 0) { // s, b 중에 아무것도 맞는 게 없으면
+    if (cResult.ball ==0 && cResult.strike == 0 ) { // s, b 중에 아무것도 맞는 게 없으면
       cResult.out = 1; // out 처리
     }
     return cResult;
