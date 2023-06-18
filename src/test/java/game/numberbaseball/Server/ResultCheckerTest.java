@@ -16,12 +16,12 @@ class ResultCheckerTest {
     int[] user = {1, 2, 3};
 
     // When
-    CountResult actualResult = resultChecker.judgeNumber(com, user);
+    ServerCountResult actualResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    CountResult expectedResult = CountResult.builder()
-        .strike(3)
+    ServerCountResult expectedResult = ServerCountResult.builder()
         .ball(0)
+        .strike(3)
         .out(0)
         .build();
 
@@ -36,12 +36,12 @@ class ResultCheckerTest {
     int[] user = {4, 5, 6};
 
     // When
-    CountResult actualResult = resultChecker.judgeNumber(com, user);
+    ServerCountResult actualResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    CountResult expectedResult = CountResult.builder()
-        .strike(0)
+    ServerCountResult expectedResult = ServerCountResult.builder()
         .ball(0)
+        .strike(0)
         .out(1)
         .build();
 
@@ -56,12 +56,12 @@ class ResultCheckerTest {
     int[] user = {3, 1, 2};
 
     // When
-    CountResult actualResult = resultChecker.judgeNumber(com, user);
+    ServerCountResult actualResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    CountResult expectedResult = CountResult.builder()
-        .strike(0)
+    ServerCountResult expectedResult = ServerCountResult.builder()
         .ball(3)
+        .strike(0)
         .out(0)
         .build();
 
@@ -76,12 +76,12 @@ class ResultCheckerTest {
     int[] user = {5, 7, 9};
 
     // When
-    CountResult actualResult = resultChecker.judgeNumber(com, user);
+    ServerCountResult actualResult = resultChecker.judgeNumber(com, user);
 
     // Then
-    CountResult expectedResult = CountResult.builder()
-        .strike(1)
+    ServerCountResult expectedResult = ServerCountResult.builder()
         .ball(1)
+        .strike(1)
         .out(0)
         .build();
 
