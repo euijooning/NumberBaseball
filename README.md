@@ -39,6 +39,13 @@
 ### 🚀 프로젝트 기간
 - 2023.06.06 ~ 2023.06.18
 
+### 🚀 시연 영상(이미지 클릭)
+<p align="left">
+  <a href="https://www.youtube.com/watch?v=CUrdldgn4uA">
+    <img src="https://github.com/euijooning/NumberBaseball/assets/49093239/e4898f92-c9b7-42bf-bca3-cbbbd731aef4" width=68, height=65 alt="이미지">
+  </a>
+</p>
+
 <br>
 
 ---
