@@ -1,6 +1,5 @@
 # ![image](https://github.com/euijooning/NumberBaseball/assets/49093239/803399e1-ff5a-43cd-bc0f-fb54a1687975)숫자 야구 게임(NumberBaseball)
 
-
 <div>
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbxPjvq%2Fbtsknvzrv2g%2FOovugdfpImYi1Pg0FZWsv1%2Fimg.png" style="width: 390px;">
 </div>
@@ -10,6 +9,11 @@
 <p>
 <span style="font-size: 20px; font-weight: bold;">⚾자바 GUI와 TCP 통신을 이용한 숫자야구 게임입니다.
 </p>
+<br>
+
+## ⚾ 포트폴리오 정리 링크 <Notion>
+- https://codegradation.notion.site/NumberBaseball-79cd4dc2952e4d6da66d0554cb0b6e44?pvs=4
+
 <br>
 
 ## ⚾ 게임 규칙 <br>
