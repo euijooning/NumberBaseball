@@ -12,7 +12,7 @@
 <br>
 
 ## ⚾ 포트폴리오 정리 링크 <Notion>
-- https://codegradation.notion.site/NumberBaseball-79cd4dc2952e4d6da66d0554cb0b6e44?pvs=4
+- https://coreknockknock.notion.site/NumberBaseball-79cd4dc2952e4d6da66d0554cb0b6e44?pvs=4
 
 <br>
 
