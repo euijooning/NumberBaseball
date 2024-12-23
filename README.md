@@ -45,7 +45,7 @@
 
 ### 🚀 시연 영상(이미지 클릭)
 <p align="left">
-  <a href="https://www.youtube.com/watch?v=ik8XyHXT8nk">
+  <a href="https://youtu.be/dkUkscMpxsU">
     <img src="https://github.com/euijooning/NumberBaseball/assets/49093239/e4898f92-c9b7-42bf-bca3-cbbbd731aef4" width=68, height=65 alt="이미지">
   </a>
 </p>
