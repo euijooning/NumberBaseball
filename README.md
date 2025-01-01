@@ -1,5 +1,4 @@
-# ![image](https://github.com/euijooning/NumberBaseball/assets/49093239/803399e1-ff5a-43cd-bc0f-fb54a1687975)숫자 야구 게임(NumberBaseball)
-
+# 숫자 야구 게임 ⚾
 
 <div>
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbxPjvq%2Fbtsknvzrv2g%2FOovugdfpImYi1Pg0FZWsv1%2Fimg.png" style="width: 390px;">
@@ -28,6 +27,7 @@
 📺 https://youtu.be/M7vqkyJ9CDE
 
 <br>
+
 ---
 
 ## 📋 프로젝트 개요 <br>
